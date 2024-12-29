@@ -32,7 +32,7 @@ ITEM_TEMPLATE = """
 
 URL = "https://jp.daisonet.com/collections/newarrival"
 DATE_FORMAT = "%a, %d %b %Y %H:%M:%S +0900"
-NOW = datetime.now().strftime(DATE_FORMAT)
+NOW = datetime.utcnow().strftime(DATE_FORMAT)
 
 
 def get_image_url(data_src: str, width: int) -> str:

@@ -1,0 +1,38 @@
+[project]
+name = "Hyakkin-RSS"
+version = "0.1.0"
+description = "100円均一の新商品情報を配信するRSS"
+readme = "README.md"
+requires-python = ">=3.12"
+license = { file = "LICENSE.txt" }
+
+authors = [{ name = "yamamo-i" }]
+dependencies = [
+    "asyncclick==8.1.7.2",    # https://pypi.org/project/asyncclick/
+    "beautifulsoup4==4.12.3", # https://pypi.org/project/beautifulsoup4/
+    "requests==2.32.3",       # https://pypi.org/project/requests/
+]
+
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+# 開発用依存関係を定義
+[project.optional-dependencies]
+dev = ["ruff"]
+
+[tool.ruff]
+# Ruff general settings
+line-length = 130        # Maximum line length (default is 88, similar to Black)
+target-version = "py312" # Python version to target, e.g., 'py312' for Python 3.12s
+
+# Enable or disable specific rules
+select = ["E", "F", "W", "C90"] # Enable common rules for errors, warnings, etc.
+ignore = ["E501"]               # Ignore long line errors, example
+
+# Specify files or directories to include/exclude
+exclude = [".venv", "__pycache__", "build", "dist", "migrations"]
+
+[tool.ruff.per-file-ignores]
+# Example: Ignore specific errors in test files
+"tests/*.py" = ["E231", "F401"]

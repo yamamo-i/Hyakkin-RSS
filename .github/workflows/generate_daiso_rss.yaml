@@ -1,0 +1,43 @@
+name: DAISO RSS Feed Generator
+
+on:
+  # 6時間に一度実行
+  schedule:
+    - cron: "0 */6 * * *"
+  
+  # 手動トリガーで実行
+  workflow_dispatch:
+
+jobs:
+  generate_rss:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout the repository
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.12'  # 使用するPythonのバージョンを指定
+
+    - name: Install dependencies
+      run: |
+        python -m venv .venv
+        source .venv/bin/activate
+        pip install .  # 必要な依存関係をインストール
+
+    - name: Run the RSS script
+      run: |
+        source .venv/bin/activate
+        python daiso.py  # daiso.py スクリプトを実行してRSSを生成
+
+    - name: Commit and push new RSS file (if any changes)
+      run: |
+        git config --global user.name "github-actions"
+        git config --global user.email "github-actions@github.com"
+        git add docs
+        git commit -m "Update RSS feed"
+        git push
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

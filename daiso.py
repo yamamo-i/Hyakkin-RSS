@@ -104,7 +104,7 @@ def get_exist_titles(xml_path: str) -> dict:
     """
     # 既存のファイルがあれば、商品タイトルを取得する
     if not path.exists(xml_path):
-        return []
+        return {}
     with open(xml_path, "r", encoding="utf-8") as file:
         # MEMO xmlをhtmlでparseしてwarningがでるが依存ライブラリ増やしたくないので一旦無視
         soup = BeautifulSoup(file, "html.parser")

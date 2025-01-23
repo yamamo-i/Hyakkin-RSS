@@ -4,7 +4,7 @@
         <title>DAISOの新着商品</title>
         <link>https://jp.daisonet.com/collections/newarrival</link>
         <description>DAISO 新着商品の一覧</description>
-        <lastBuildDate>Wed, 22 Jan 2025 18:29:41 +0900</lastBuildDate>
+        <lastBuildDate>Thu, 23 Jan 2025 01:39:36 +0900</lastBuildDate>
         <language>ja</language>
         <item>
             <title>２Ｗａｙトートバッグ（ＧＹ）</title>
@@ -137,16 +137,6 @@
             <pubDate>Sun, 29 Dec 2024 10:42:39 +0900</pubDate>
         </item>
         <item>
-            <title>ミニチュア（パン屋さん）</title>
-            <link>https://jp.daisonet.com/products/4550480433516</link>
-            <pubDate>Fri, 03 Jan 2025 06:29:47 +0900</pubDate>
-        </item>
-        <item>
-            <title>ぐにゅぐにゅジェル（１２個セット、クリア）</title>
-            <link>https://jp.daisonet.com/products/4550480544236</link>
-            <pubDate>Fri, 03 Jan 2025 06:29:47 +0900</pubDate>
-        </item>
-        <item>
             <title>吸水キッチンマット（イチゴ柄）</title>
             <link>https://jp.daisonet.com/products/4550480349992</link>
             <pubDate>Wed, 08 Jan 2025 12:42:24 +0900</pubDate>
@@ -170,6 +160,31 @@
             <title>電動ミニシェーバー</title>
             <link>https://jp.daisonet.com/products/4550480443751</link>
             <pubDate>Wed, 08 Jan 2025 12:42:24 +0900</pubDate>
+        </item>
+        <item>
+            <title>電動ネイルケア</title>
+            <link>https://jp.daisonet.com/products/4550480443744</link>
+            <pubDate>Thu, 23 Jan 2025 01:39:36 +0900</pubDate>
+        </item>
+        <item>
+            <title>ソフトバスケット（ＷＨ、楕円形、１５Ｌ）</title>
+            <link>https://jp.daisonet.com/products/4550480499420</link>
+            <pubDate>Thu, 23 Jan 2025 01:39:36 +0900</pubDate>
+        </item>
+        <item>
+            <title>ソフトバスケット（ＬＰＫ、楕円形、１５Ｌ）</title>
+            <link>https://jp.daisonet.com/products/4550480499406</link>
+            <pubDate>Thu, 23 Jan 2025 01:39:36 +0900</pubDate>
+        </item>
+        <item>
+            <title>ソフトバスケット（ＬＧＹ、楕円形、１５Ｌ）</title>
+            <link>https://jp.daisonet.com/products/4550480499413</link>
+            <pubDate>Thu, 23 Jan 2025 01:39:36 +0900</pubDate>
+        </item>
+        <item>
+            <title>折りたためるくるくるハンガー（丸）</title>
+            <link>https://jp.daisonet.com/products/4550480492056</link>
+            <pubDate>Thu, 23 Jan 2025 01:39:36 +0900</pubDate>
         </item>
     </channel>
 </rss>

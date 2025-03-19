@@ -4,12 +4,17 @@
         <title>DAISOの新着商品</title>
         <link>https://jp.daisonet.com/collections/newarrival</link>
         <description>DAISO 新着商品の一覧</description>
-        <lastBuildDate>Wed, 19 Mar 2025 06:31:51 +0900</lastBuildDate>
+        <lastBuildDate>Wed, 19 Mar 2025 12:44:56 +0900</lastBuildDate>
         <language>ja</language>
         <item>
             <title>レターセット（ＢＷ）</title>
             <link>https://jp.daisonet.com/products/4550480740621</link>
             <pubDate>Mon, 17 Mar 2025 01:50:19 +0900</pubDate>
+        </item>
+        <item>
+            <title>レターセット（ＩＶ）</title>
+            <link>https://jp.daisonet.com/products/4550480740614</link>
+            <pubDate>Wed, 19 Mar 2025 12:44:56 +0900</pubDate>
         </item>
         <item>
             <title>レターセット（ＰＫ）</title>
@@ -30,6 +35,11 @@
             <title>ワイヤレス充電器　ＱＩ対応　ポケットタイプ　ＷＨ</title>
             <link>https://jp.daisonet.com/products/4571527710445</link>
             <pubDate>Mon, 17 Mar 2025 01:50:19 +0900</pubDate>
+        </item>
+        <item>
+            <title>３Ａ　ＴｙｐｅーＣ充電通信ケーブル　　グレー２ｍ</title>
+            <link>https://jp.daisonet.com/products/4560348444059</link>
+            <pubDate>Wed, 19 Mar 2025 12:44:56 +0900</pubDate>
         </item>
         <item>
             <title>充電・転送ケーブル（Ｌ型　ＵＳＢ　ＰＯＷＥＲ　ＤＥＬＩＶＥＲＹ、１００Ｗ対応、Ｔｙｐｅ―Ｃ）</title>
@@ -204,16 +214,6 @@
         <item>
             <title>ジュエルケース　キティ</title>
             <link>https://jp.daisonet.com/products/4582364526847</link>
-            <pubDate>Fri, 14 Mar 2025 06:30:45 +0900</pubDate>
-        </item>
-        <item>
-            <title>つぶつぶ保冷剤　ヘッド用</title>
-            <link>https://jp.daisonet.com/products/4550668302597</link>
-            <pubDate>Fri, 14 Mar 2025 06:30:45 +0900</pubDate>
-        </item>
-        <item>
-            <title>つぶつぶ保冷剤　ネック用</title>
-            <link>https://jp.daisonet.com/products/4550668302580</link>
             <pubDate>Fri, 14 Mar 2025 06:30:45 +0900</pubDate>
         </item>
     </channel>

@@ -4,7 +4,7 @@
         <title>DAISOの新着商品</title>
         <link>https://jp.daisonet.com/collections/newarrival</link>
         <description>DAISO 新着商品の一覧</description>
-        <lastBuildDate>Wed, 30 Jul 2025 18:38:48 +0900</lastBuildDate>
+        <lastBuildDate>Thu, 31 Jul 2025 02:11:34 +0900</lastBuildDate>
         <language>ja</language>
         <item>
             <title>バッグ底板（サークル、スクエア）　なし</title>
@@ -152,11 +152,6 @@
             <pubDate>Fri, 25 Jul 2025 02:09:12 +0900</pubDate>
         </item>
         <item>
-            <title>スカルプシャワーヘッドＧｒａｙ　なし</title>
-            <link>https://jp.daisonet.com/products/4525636348259</link>
-            <pubDate>Tue, 29 Jul 2025 06:39:45 +0900</pubDate>
-        </item>
-        <item>
             <title>クールタオル（ボトル付、柄Ｂ）　なし</title>
             <link>https://jp.daisonet.com/products/4550480747682</link>
             <pubDate>Fri, 25 Jul 2025 02:09:12 +0900</pubDate>
@@ -195,6 +190,11 @@
             <title>クールネックバンド（ドット、Ｍ）　なし</title>
             <link>https://jp.daisonet.com/products/4550480757049</link>
             <pubDate>Fri, 25 Jul 2025 02:09:12 +0900</pubDate>
+        </item>
+        <item>
+            <title>クールネックバンド（ドット、Ｌ）　なし</title>
+            <link>https://jp.daisonet.com/products/4550480757070</link>
+            <pubDate>Thu, 31 Jul 2025 02:11:34 +0900</pubDate>
         </item>
     </channel>
 </rss>

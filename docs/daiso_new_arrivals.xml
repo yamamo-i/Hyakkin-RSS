@@ -4,7 +4,7 @@
         <title>DAISOの新着商品</title>
         <link>https://jp.daisonet.com/collections/newarrival</link>
         <description>DAISO 新着商品の一覧</description>
-        <lastBuildDate>Tue, 09 Sep 2025 01:50:00 +0900</lastBuildDate>
+        <lastBuildDate>Tue, 09 Sep 2025 06:35:14 +0900</lastBuildDate>
         <language>ja</language>
         <item>
             <title>ランチ巾着（フリル付、ＬＰＫ）　なし</title>
@@ -17,9 +17,19 @@
             <pubDate>Fri, 29 Aug 2025 12:48:15 +0900</pubDate>
         </item>
         <item>
+            <title>洗えるヘアゴム（ブラック）　なし</title>
+            <link>https://jp.daisonet.com/products/4550480498751</link>
+            <pubDate>Tue, 09 Sep 2025 06:35:14 +0900</pubDate>
+        </item>
+        <item>
             <title>背当てクッション（シナモロール・ポチャッコ・マイメロディ　クロミ）　なし</title>
             <link>https://jp.daisonet.com/products/4987646343875</link>
             <pubDate>Wed, 03 Sep 2025 01:45:23 +0900</pubDate>
+        </item>
+        <item>
+            <title>シートクッション（シナモロール・マイメロディ　クロミ・サンリオキャラクターズ）　なし</title>
+            <link>https://jp.daisonet.com/products/4987646343844</link>
+            <pubDate>Tue, 09 Sep 2025 06:35:14 +0900</pubDate>
         </item>
         <item>
             <title>２０２６卓上カレンダー　ビジネスメッセージ付き　なし</title>
@@ -170,41 +180,6 @@
             <title>スケジュールシール２６（アイコン）　なし</title>
             <link>https://jp.daisonet.com/products/4550480884707</link>
             <pubDate>Thu, 04 Sep 2025 12:45:06 +0900</pubDate>
-        </item>
-        <item>
-            <title>スケジュールシール２６（モノトーン）　なし</title>
-            <link>https://jp.daisonet.com/products/4550480884684</link>
-            <pubDate>Thu, 04 Sep 2025 12:45:06 +0900</pubDate>
-        </item>
-        <item>
-            <title>スケジュールシール２６（箔押しフラワー）　なし</title>
-            <link>https://jp.daisonet.com/products/4550480884677</link>
-            <pubDate>Thu, 04 Sep 2025 12:45:06 +0900</pubDate>
-        </item>
-        <item>
-            <title>スケジュールシール２６（アニマル）　なし</title>
-            <link>https://jp.daisonet.com/products/4550480884660</link>
-            <pubDate>Thu, 04 Sep 2025 12:45:06 +0900</pubDate>
-        </item>
-        <item>
-            <title>スケジュールシール２６（天気）　なし</title>
-            <link>https://jp.daisonet.com/products/4550480884653</link>
-            <pubDate>Thu, 04 Sep 2025 12:45:06 +0900</pubDate>
-        </item>
-        <item>
-            <title>スケジュールシール２６（ガーリー）　なし</title>
-            <link>https://jp.daisonet.com/products/4550480884646</link>
-            <pubDate>Thu, 04 Sep 2025 12:45:06 +0900</pubDate>
-        </item>
-        <item>
-            <title>電子レンジ調理器（パスタ用、ホワイト）　なし</title>
-            <link>https://jp.daisonet.com/products/4550480878904</link>
-            <pubDate>Mon, 08 Sep 2025 01:54:14 +0900</pubDate>
-        </item>
-        <item>
-            <title>メモリアルフラワーブッシュ（１）　なし</title>
-            <link>https://jp.daisonet.com/products/4550480864501</link>
-            <pubDate>Wed, 03 Sep 2025 01:45:23 +0900</pubDate>
         </item>
     </channel>
 </rss>

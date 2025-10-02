@@ -4,7 +4,7 @@
         <title>DAISOの新着商品</title>
         <link>https://jp.daisonet.com/collections/newarrival</link>
         <description>DAISO 新着商品の一覧</description>
-        <lastBuildDate>Thu, 02 Oct 2025 06:33:54 +0900</lastBuildDate>
+        <lastBuildDate>Thu, 02 Oct 2025 12:47:09 +0900</lastBuildDate>
         <language>ja</language>
         <item>
             <title>ブランケット（ディズニーヴィランズ）</title>
@@ -157,6 +157,11 @@
             <pubDate>Tue, 30 Sep 2025 01:46:38 +0900</pubDate>
         </item>
         <item>
+            <title>ランチ巾着（フリル付、ＬＢＬ）　なし</title>
+            <link>https://jp.daisonet.com/products/4550480762081</link>
+            <pubDate>Thu, 02 Oct 2025 12:47:09 +0900</pubDate>
+        </item>
+        <item>
             <title>ヘアアイロンマット　なし</title>
             <link>https://jp.daisonet.com/products/4550480570136</link>
             <pubDate>Thu, 25 Sep 2025 12:50:48 +0900</pubDate>
@@ -200,11 +205,6 @@
             <title>マスキングテープ サンリオ ぷよぷよ</title>
             <link>https://jp.daisonet.com/products/4582364523310</link>
             <pubDate>Wed, 01 Oct 2025 06:35:10 +0900</pubDate>
-        </item>
-        <item>
-            <title>仕切れる小物ケース レギュラー</title>
-            <link>https://jp.daisonet.com/products/4580004043198</link>
-            <pubDate>Thu, 02 Oct 2025 06:33:54 +0900</pubDate>
         </item>
     </channel>
 </rss>

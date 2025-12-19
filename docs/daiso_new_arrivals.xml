@@ -4,13 +4,8 @@
         <title>DAISOの新着商品</title>
         <link>https://jp.daisonet.com/collections/newarrival</link>
         <description>DAISO 新着商品の一覧</description>
-        <lastBuildDate>Fri, 19 Dec 2025 02:03:57 +0900</lastBuildDate>
+        <lastBuildDate>Fri, 19 Dec 2025 06:39:13 +0900</lastBuildDate>
         <language>ja</language>
-        <item>
-            <title>防災用インソール　２６．５ｃｍ</title>
-            <link>https://jp.daisonet.com/products/4550480748153</link>
-            <pubDate>Tue, 09 Dec 2025 02:01:13 +0900</pubDate>
-        </item>
         <item>
             <title>粘着クリーナーフック ピンタイプ　２個入</title>
             <link>https://jp.daisonet.com/products/4905687356838</link>
@@ -220,6 +215,11 @@
             <title>書きやすいノート（セミＢ５、Ａ罫、３２枚）</title>
             <link>https://jp.daisonet.com/products/4550480444611</link>
             <pubDate>Thu, 18 Dec 2025 02:01:01 +0900</pubDate>
+        </item>
+        <item>
+            <title>書きやすいノート（セミＢ５、方眼罫、３２枚）</title>
+            <link>https://jp.daisonet.com/products/4550480444581</link>
+            <pubDate>Fri, 19 Dec 2025 06:39:13 +0900</pubDate>
         </item>
     </channel>
 </rss>

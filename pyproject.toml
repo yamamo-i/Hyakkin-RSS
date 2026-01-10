@@ -9,7 +9,7 @@ license = { file = "LICENSE.txt" }
 authors = [{ name = "yamamo-i" }]
 dependencies = [
     "asyncclick==8.3.0.7",    # https://pypi.org/project/asyncclick/
-    "beautifulsoup4==4.14.2", # https://pypi.org/project/beautifulsoup4/
+    "beautifulsoup4==4.14.3", # https://pypi.org/project/beautifulsoup4/
     "requests==2.32.5",       # https://pypi.org/project/requests/
 ]
 

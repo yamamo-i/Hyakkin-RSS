@@ -19,7 +19,7 @@ build-backend = "setuptools.build_meta"
 
 # 開発用依存関係を定義
 [project.optional-dependencies]
-dev = ["ruff"]
+dev = ["pytest", "pytest-asyncio", "ruff"]
 
 [tool.ruff]
 line-length = 130

@@ -1,5 +1,4 @@
 name: Lint
-
 on:
   push:
     branches:
@@ -27,4 +26,4 @@ jobs:
           ruff format --check .
           ruff check --output-format=github .
       - name: Run bandit
-        run: bandit -r .
+        run: bandit -c pyproject.toml -r .

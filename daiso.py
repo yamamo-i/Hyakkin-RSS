@@ -54,7 +54,7 @@ def fetch_new_arrivals() -> list:
 
     :return: 商品データのリスト(辞書型 {"title": 商品名, "link": 商品のURL})
     """
-    response = requests.get(URL)
+    response = requests.get(URL, timeout=60)
     response.raise_for_status()
     soup = BeautifulSoup(response.text, "html.parser")
 

@@ -1,3 +1,4 @@
+# ruff: noqa: S101
 import pytest
 from unittest.mock import MagicMock, patch, mock_open
 from bs4 import BeautifulSoup

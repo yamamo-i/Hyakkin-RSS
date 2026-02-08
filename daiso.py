@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 import asyncio
 import asyncclick as click
 import logging
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 from os import path
 from typing import List, Dict
 
@@ -33,7 +33,8 @@ ITEM_TEMPLATE = """
 
 URL = "https://jp.daisonet.com/collections/newarrival"
 DATE_FORMAT = "%a, %d %b %Y %H:%M:%S +0900"
-NOW = datetime.now().strftime(DATE_FORMAT)
+JST = timezone(timedelta(hours=9))
+NOW = datetime.now(JST).strftime(DATE_FORMAT)
 
 
 def get_image_url(data_src: str, width: int) -> str:

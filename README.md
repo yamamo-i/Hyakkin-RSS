@@ -7,7 +7,7 @@
 
 | 店舗 | URL |
 |-|-|
-| DAISO | https://yamamo-i.github.io/Hyakkin-RSS/daiso_new_arrivals.xml |
+| DAISO | https://yamamo-i.github.io/Hyakkin/daiso_new_arrivals.xml |
 
 ## 技術的な話
 

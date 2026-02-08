@@ -22,17 +22,13 @@ build-backend = "setuptools.build_meta"
 dev = ["ruff"]
 
 [tool.ruff]
-# Ruff general settings
-line-length = 130        # Maximum line length (default is 88, similar to Black)
-target-version = "py312" # Python version to target, e.g., 'py312' for Python 3.12s
-
-# Enable or disable specific rules
-select = ["E", "F", "W", "C90"] # Enable common rules for errors, warnings, etc.
-ignore = ["E501"]               # Ignore long line errors, example
-
-# Specify files or directories to include/exclude
+line-length = 130
+target-version = "py312"
 exclude = [".venv", "__pycache__", "build", "dist", "migrations"]
 
-[tool.ruff.per-file-ignores]
-# Example: Ignore specific errors in test files
+[tool.ruff.lint]
+select = ["E", "F", "W", "C90"]
+ignore = ["E501"]
+
+[tool.ruff.lint.per-file-ignores]
 "tests/*.py" = ["E231", "F401"]

@@ -3,8 +3,9 @@ from bs4 import BeautifulSoup
 import asyncio
 import asyncclick as click
 import logging
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 from os import path
+from typing import List, Dict
 
 # ロガーの設定
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
@@ -32,7 +33,8 @@ ITEM_TEMPLATE = """
 
 URL = "https://jp.daisonet.com/collections/newarrival"
 DATE_FORMAT = "%a, %d %b %Y %H:%M:%S +0900"
-NOW = datetime.utcnow().strftime(DATE_FORMAT)
+JST = timezone(timedelta(hours=9))
+NOW = datetime.now(JST).strftime(DATE_FORMAT)
 
 
 def get_image_url(data_src: str, width: int) -> str:
@@ -48,33 +50,100 @@ def get_image_url(data_src: str, width: int) -> str:
     return "https:" + data_src.format(width=width)
 
 
-def fetch_new_arrivals() -> list:
+def _get_last_page(soup: BeautifulSoup) -> int:
     """
-    DAISOの新着商品情報をスクレイピングして、商品データを抽出します。
+    ページネーションから最終ページ番号を取得します。
 
-    :return: 商品データのリスト(辞書型 {"title": 商品名, "link": 商品のURL})
+    :param soup: BeautifulSoupオブジェクト
+    :return: 最終ページ番号
     """
-    response = requests.get(URL, timeout=60)
-    response.raise_for_status()
-    soup = BeautifulSoup(response.text, "html.parser")
+    pagination_nav = soup.find("div", class_="pagination__nav")
+    if not pagination_nav:
+        return 1
+    pages = pagination_nav.find_all("a", {"data-page": True})
+    if not pages:
+        return 1
+    last_page = max(int(page["data-page"]) for page in pages)
+    return last_page
 
-    # 商品リストを抽出
+
+def _parse_products_from_page(soup: BeautifulSoup) -> List[Dict[str, str]]:
+    """
+    単一ページから商品情報を抽出します。
+
+    :param soup: BeautifulSoupオブジェクト
+    :return: 商品データのリスト
+    """
     product_list = soup.find("div", class_="product-list product-list--collection product-list--with-sidebar")
     if not product_list:
-        raise ValueError("商品リストが見つかりませんでした。")
+        return []
 
     products = []
     for item in product_list.find_all("div", class_="product-item"):
         try:
-            title = item.find("a", class_="product-item__title").text.strip()
-            logger.info(f"title: {title}")
-            link = f"https://jp.daisonet.com{item.find('a', class_='product-item__title')['href']}"
-            products.append({"title": title, "link": link})
+            title_element = item.find("a", class_="product-item__title")
+            if title_element:
+                title = title_element.text.strip()
+                link = f"https://jp.daisonet.com{title_element['href']}"
+                logger.info(f"Found product: {title}")
+                products.append({"title": title, "link": link})
         except (AttributeError, TypeError):
-            # 商品情報の一部が欠けている場合はスキップ
+            logger.warning("Skipping an item due to missing information.")
             continue
-
     return products
+
+
+async def fetch_new_arrivals() -> List[Dict[str, str]]:
+    """
+    DAISOの新着商品情報を全ページからスクレイピングして、商品データを抽出します。
+
+    :return: 商品データのリスト(辞書型 {"title": 商品名, "link": 商品のURL})
+    """
+    all_products = []
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+    }
+    loop = asyncio.get_running_loop()
+
+    # First page to get pagination info
+    logger.info("Fetching page 1 to determine total pages...")
+    response = await loop.run_in_executor(None, lambda: requests.get(URL, headers=headers, timeout=60))
+    response.raise_for_status()
+    soup = BeautifulSoup(response.text, "html.parser")
+
+    last_page = _get_last_page(soup)
+    logger.info(f"Total pages found: {last_page}")
+
+    # Process first page
+    logger.info("Processing page 1...")
+    all_products.extend(_parse_products_from_page(soup))
+
+    # Process remaining pages
+    if last_page > 1:
+        tasks = []
+        sem = asyncio.Semaphore(5)
+
+        async def _fetch_page(page_num: int):
+            async with sem:
+                logger.info(f"Fetching and processing page {page_num}...")
+                page_url = f"{URL}?page={page_num}"
+                try:
+                    response = await loop.run_in_executor(None, lambda: requests.get(page_url, headers=headers, timeout=60))
+                    response.raise_for_status()
+                    soup = BeautifulSoup(response.text, "html.parser")
+                    return _parse_products_from_page(soup)
+                except requests.RequestException as e:
+                    logger.error(f"Could not fetch page {page_num}: {e}")
+                    return []
+
+        for page_num in range(2, last_page + 1):
+            tasks.append(_fetch_page(page_num))
+
+        results = await asyncio.gather(*tasks)
+        for result in results:
+            all_products.extend(result)
+
+    return all_products
 
 
 def generate_rss(products: list, exist_products: dict) -> str:
@@ -125,8 +194,7 @@ async def main(output: str) -> None:
     """
     try:
         logger.info("新着商品情報を取得中...")
-        # TODO: dailyで実行するので48件以上の商品がある場合は想定しないが、もし48件以上の商品がある場合はページネーションを考慮する
-        products = fetch_new_arrivals()
+        products = await fetch_new_arrivals()
         logger.info(f"{len(products)} 件の商品を取得しました。")
 
         # 既存のRSSファイルから商品タイトルを取得する

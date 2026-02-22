@@ -1,5 +1,6 @@
 # ruff: noqa: S101
 import pytest
+import json
 from unittest.mock import MagicMock, patch, mock_open
 from bs4 import BeautifulSoup
 import daiso
@@ -91,6 +92,26 @@ def test_get_exist_titles():
             titles = daiso.get_exist_titles("dummy.xml")
             assert "Existing Item" in titles
             assert titles["Existing Item"] == "Tue, 31 Dec 2024 00:00:00 +0900"
+
+
+def test_load_history_json():
+    """JSON履歴読み込みのテスト"""
+    history_data = {"Item A": "Date A"}
+    with patch("builtins.open", mock_open(read_data=json.dumps(history_data))):
+        with patch("daiso.path.exists", side_effect=lambda p: p.endswith(".json")):
+            result = daiso.load_history("history.json", "dummy.xml")
+            assert result == history_data
+
+
+def test_load_history_fallback_xml():
+    """JSONがなくXMLがある場合のフォールバックテスト"""
+    xml_content = """<rss><channel><item><title>Item B</title><pubDate>Date B</pubDate></item></channel></rss>"""
+    # path.exists: json -> False, xml -> True
+    with patch("daiso.path.exists", side_effect=lambda p: p.endswith(".xml")):
+        with patch("builtins.open", mock_open(read_data=xml_content)):
+            result = daiso.load_history("history.json", "dummy.xml")
+            assert "Item B" in result
+            assert result["Item B"] == "Date B"
 
 
 @pytest.mark.asyncio

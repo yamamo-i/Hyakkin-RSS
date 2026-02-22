@@ -1,4 +1,5 @@
 import requests
+import json
 from bs4 import BeautifulSoup
 import asyncio
 import asyncclick as click
@@ -181,6 +182,35 @@ def get_exist_titles(xml_path: str) -> dict:
         return titles
 
 
+def load_history(history_path: str, xml_path: str) -> Dict[str, str]:
+    """
+    履歴ファイル(JSON)から過去の商品データを読み込みます。
+    JSONがない場合は、既存のXMLファイルから読み込みを試みます。
+    """
+    if path.exists(history_path):
+        try:
+            with open(history_path, "r", encoding="utf-8") as f:
+                return json.load(f)
+        except Exception as e:
+            logger.warning(f"履歴ファイルの読み込みに失敗しました: {e}")
+
+    # Fallback to XML
+    if path.exists(xml_path):
+        logger.info("履歴ファイルが見つからないため、既存のRSSからデータを移行します。")
+        return get_exist_titles(xml_path)
+
+    return {}
+
+
+def save_history(history_path: str, data: Dict[str, str]) -> None:
+    """履歴データをJSONファイルに保存します。"""
+    try:
+        with open(history_path, "w", encoding="utf-8") as f:
+            json.dump(data, f, ensure_ascii=False, indent=2)
+    except Exception as e:
+        logger.error(f"履歴ファイルの保存に失敗しました: {e}")
+
+
 @click.command()
 @click.option(
     "--output",
@@ -193,21 +223,37 @@ async def main(output: str) -> None:
     DAISOの新着商品情報を取得して、RSS形式で出力します。
     """
     try:
+        # 履歴ファイルのパスを出力ファイル名から生成 (例: docs/daiso_new_arrivals.xml -> docs/daiso_new_arrivals_history.json)
+        history_path = path.splitext(output)[0] + "_history.json"
+
         logger.info("新着商品情報を取得中...")
         products = await fetch_new_arrivals()
         logger.info(f"{len(products)} 件の商品を取得しました。")
 
-        # 既存のRSSファイルから商品タイトルを取得する
-        exist_titles = get_exist_titles(output)
-        logger.info(f"既存のRSSファイルから {len(exist_titles)} 件の商品タイトルを取得しました。")
+        # 過去のデータを読み込む
+        exist_titles = load_history(history_path, output)
+        logger.info(f"過去のデータから {len(exist_titles)} 件の商品タイトルを読み込みました。")
+
+        # 新しい商品のみを抽出
+        new_products = []
+        for product in products:
+            if product["title"] not in exist_titles:
+                new_products.append(product)
+                exist_titles[product["title"]] = NOW
+
+        logger.info(f"{len(new_products)} 件の新しい商品が見つかりました。")
 
         logger.info("RSSファイルを生成中...")
-        rss_content = generate_rss(products, exist_titles)
+        rss_content = generate_rss(new_products, exist_titles)
 
         with open(output, "w", encoding="utf-8") as file:
             file.write(rss_content)
 
+        # 履歴を保存
+        save_history(history_path, exist_titles)
+
         logger.info(f"RSSファイルを生成しました: {output}")
+        logger.info(f"履歴ファイルを保存しました: {history_path}")
     except Exception:
         logger.exception("エラーが発生しました")
 
